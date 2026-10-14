@@ -1,141 +1,290 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-/* !general propertyies */
-input{
-    border: none;
-    outline: none;
-    background-color: #000024;
-    height: 35px;
-    margin: 5px ;
-    padding: 2px 5px;
-    border-radius: 5px ;
-    transition: 0.6s;
-    color: white;
-    cursor:pointer;
-}
-input:focus{
-    transform: scale(1.04);
-    background-color: #0000209c;
 
+:root {
+    color-scheme: dark;
+    --page: #101426;
+    --surface: #191f36;
+    --surface-raised: #202944;
+    --field: #11182d;
+    --border: rgba(190, 204, 255, 0.14);
+    --text: #f4f6ff;
+    --muted: #a9b2cd;
+    --accent: #8b9cff;
+    --accent-strong: #7185ff;
+    --danger: #ff7688;
 }
-button{
-    background-color: beige;
-    height: 30px;
-    color: rgba(0, 0, 0, 0.829);
-    font-size: 23px;
-    border: none;
-    outline: none;
-    text-transform: capitalize;
-    border-radius: 5px;
-    width: 99%;
-    margin: auto;
-    margin-top: 5px;
-    font-weight: bold;
-    transition: 0.6s;
-    cursor: pointer;
 
-}
-button:hover{
- background-color: #aaaac5;
- color: rgb(0, 0, 0);
-    transform: scale(1.04);
-    letter-spacing: 2px;
-}
-body{
-    width: 100%;
+body {
     min-height: 100vh;
-    background-color: #1e1e42;
-    color: rgb(255, 255, 255);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 36px 20px 56px;
+    background:
+        radial-gradient(ellipse at 50% -15%, rgba(113, 133, 255, 0.2), transparent 48%),
+        var(--page);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
-.crud{
-    width: 80%;
-    height: 100%;
-    margin: auto;
+
+.crud {
+    width: min(100%, 1180px);
+    margin: 0 auto;
 }
-/* !Header Styling */
-.header{
+
+.header {
+    margin: 0 0 28px;
     text-align: center;
     text-transform: uppercase;
-    margin: 10px;
 }
-.header h1{
-    font-size: 50px;
-    margin-bottom: 7px;
-    letter-spacing: 3px;
-}
-.header p{
-    font-size: 30px;
-    color: rgba(255, 255, 255, 0.671);
-}
-/* !Inputs Styling */
 
-.input{
-    width: 100%;
+.header h1 {
+    margin-bottom: 5px;
+    color: var(--text);
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1.1;
+}
+
+.header p {
+    color: var(--muted);
+    font-size: clamp(0.9rem, 2.6vw, 1.15rem);
+    letter-spacing: 0.12em;
+}
+
+.input,
+.output {
+    padding: clamp(16px, 3vw, 26px);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: rgba(25, 31, 54, 0.92);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+}
+
+.input {
     display: flex;
     flex-direction: column;
+    gap: 11px;
 }
-.price{
+
+input {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    margin: 0;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: none;
+    background-color: var(--field);
+    color: var(--text);
+    font: inherit;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+input::placeholder {
+    color: #8490b0;
+    text-transform: capitalize;
+}
+
+input:hover {
+    border-color: rgba(190, 204, 255, 0.3);
+}
+
+input:focus {
+    border-color: var(--accent);
+    background-color: #151e38;
+    box-shadow: 0 0 0 3px rgba(139, 156, 255, 0.16);
+}
+
+.price {
     display: flex;
+    align-items: center;
+    gap: 10px;
 }
-.price input{
-    width: 20%;
+
+.price input {
+    flex: 1 1 0;
 }
-.input small{
-    background-color: #aaaac5;
-  padding: 10px 7px;
-  border-radius: 10px;
+
+.input small {
+    flex: 0 0 auto;
+    padding: 10px 13px;
+    border-radius: 9px;
+    background-color: var(--surface-raised);
+    color: #dce2ff;
+    font-size: 0.9rem;
+    font-weight: 700;
 }
-.input small::before{
+
+.input small::before {
     content: "total: ";
 }
-/* !output */
-.output{
-    margin-top: 5px;
-    display: flex;
-    flex-direction: column;
-}
-                
-/* #deleteAll{
-    width: 100%;
-    height: 30px;
-    background-color: red;
-} */
-.btnSearch{
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-}
-.btnSearch button{
-    width: 47%;
-    margin: 10px 0;
+
+button {
+    min-height: 42px;
+    padding: 9px 16px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: var(--accent-strong);
+    color: #fff;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: capitalize;
     cursor: pointer;
+    transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
-table{
-    text-align: center;
-    margin: 10px;
-    width: 100%;
+button:hover {
+    transform: translateY(-1px);
+    background: #8797ff;
 }
-th{
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(190, 204, 255, 0.75);
+    outline-offset: 2px;
+}
+
+.input > button {
+    width: 100%;
+    margin-top: 2px;
+}
+
+.output {
+    margin-top: 20px;
+}
+
+.btnSearch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 11px 0 14px;
+}
+
+.btnSearch button {
+    width: 50%;
+}
+
+#deleteall:not(:empty) {
+    margin-bottom: 12px;
+}
+
+#deleteall button {
+    width: 100%;
+    background: #b9475c;
+}
+
+#deleteall button:hover {
+    background: #d3546b;
+}
+
+.output {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 900px;
+    margin: 6px 0 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th,
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+th {
+    background: rgba(113, 133, 255, 0.1);
+    color: #cbd3ff;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
 }
-th,td{
-    padding: 5px;
-}
-table td button{
-width: 120px;
+
+th:first-child {
+    border-radius: 8px 0 0 8px;
 }
 
+th:last-child {
+    border-radius: 0 8px 8px 0;
+}
 
+tbody tr {
+    transition: background-color 140ms ease;
+}
 
+tbody tr:hover {
+    background: rgba(139, 156, 255, 0.07);
+}
 
+tbody tr:last-child td {
+    border-bottom: 0;
+}
 
+td button {
+    min-width: 78px;
+    min-height: 34px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+}
 
+td button[id="delete"] {
+    background: #a94155;
+}
 
+td button[id="delete"]:hover {
+    background: var(--danger);
+}
 
+@media (max-width: 640px) {
+    body {
+        padding: 24px 12px 36px;
+    }
 
+    .header {
+        margin-bottom: 20px;
+    }
 
+    .price {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .price input {
+        flex: 1 1 calc(50% - 8px);
+    }
+
+    .input small {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .btnSearch {
+        flex-direction: column;
+    }
+
+    .btnSearch button {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
